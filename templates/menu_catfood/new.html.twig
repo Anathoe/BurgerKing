@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MenuCatfood{% endblock %}
+
+{% block body %}
+    <h1>Create new MenuCatfood</h1>
+
+    {{ include('menu_catfood/_form.html.twig') }}
+
+    <a href="{{ path('menu_catfood_index') }}">back to list</a>
+{% endblock %}

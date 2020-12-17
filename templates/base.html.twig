@@ -7,15 +7,17 @@
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
 
-        
+         <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
 
 
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="{{asset('assets/lib/animate/animate.min.css')}} " rel="stylesheet" >
-        <link href="{{asset('assets/lib/owlcarousel/assets/owl.carousel.min.css')}}"rel="stylesheet">
-        <link href="{{asset('assets/lib/flaticon/font/flaticon.css')}}">
+        <link href="{{asset('assets/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/lib/flaticon/font/flaticon.css')}}" rel="stylesheet">
         <link href="{{asset('assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet">
         
         {% block stylesheets %}
@@ -50,6 +52,23 @@
                             </div>
                         </div>
                         <a href="{{asset('contact')}}" class="nav-item nav-link">Contact</a>
+
+
+                        {% if app.user %} 
+
+                            <a href="{{path('app_logout')}}" class="nav-item nav-link">Logout</a>
+
+                            {% if is_granted('ROLE_ADMIN') %}
+
+                                <a href="{{path('app_logout')}}" class="nav-item nav-link">Login</a>
+                            
+                            {% endif %}
+
+                        {% else %}
+
+                            <a href="{{path('app_login')}}" class="nav-item nav-link">Login / Sign In</a>
+
+                        {% endif %}
                     </div>
                 </div>
             </div>
